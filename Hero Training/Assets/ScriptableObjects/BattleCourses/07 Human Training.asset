@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209cf72a6e2c1db43bd08f6a28ce3685, type: 3}
+  m_Name: 07 Human Training
+  m_EditorClassIdentifier: 
+  courseId: 8
+  courseName: Human Training
+  battleSelectionImage: {fileID: 21300000, guid: 091745c376503d9458e8274c5d8ca63f,
+    type: 3}
+  courseDescription: 'Humans come in different shapes.
+
+    Usually vulnerable to a specific ailment'
+  mainTrainingObjectives: 0700000004000000
+  enemiesPrefabList:
+  - {fileID: 7869087743518336108, guid: 699a52015481ae34d8d51813efd8d5fd, type: 3}
+  - {fileID: 7869087743518336108, guid: 6e83b5eba4fc31c4da231cdd1eb475bc, type: 3}
+  - {fileID: 7869087743518336108, guid: a7223519dc7fd3e49b867f8d61a842d9, type: 3}
+  - {fileID: 7869087743518336108, guid: 870c12bafef19b346ba332715a2d011f, type: 3}
+  - {fileID: 7869087743518336108, guid: 22a4ecb0f46059c4396f8b2f5b5cd3e7, type: 3}

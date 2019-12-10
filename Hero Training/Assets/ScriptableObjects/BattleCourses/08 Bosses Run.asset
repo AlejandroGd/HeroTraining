@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209cf72a6e2c1db43bd08f6a28ce3685, type: 3}
+  m_Name: 08 Bosses Run
+  m_EditorClassIdentifier: 
+  courseId: 9
+  courseName: Bosses Run
+  battleSelectionImage: {fileID: 21300000, guid: 07aaf6448fae9eb49969d64e7d101cfe,
+    type: 3}
+  courseDescription: 'The ultimate fight.
+
+    A Battle with only Almighty bosses. The best of each race put together to test
+    your fighter''s skills.'
+  mainTrainingObjectives: 07000000
+  enemiesPrefabList:
+  - {fileID: 7869087743518336108, guid: 7d7738d44825b594c9bb6dc2de816010, type: 3}
+  - {fileID: 7869087743518336108, guid: 22a4ecb0f46059c4396f8b2f5b5cd3e7, type: 3}

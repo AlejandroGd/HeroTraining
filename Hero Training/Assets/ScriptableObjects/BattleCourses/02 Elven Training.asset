@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209cf72a6e2c1db43bd08f6a28ce3685, type: 3}
+  m_Name: 02 Elven Training
+  m_EditorClassIdentifier: 
+  courseId: 2
+  courseName: Elven training
+  battleSelectionImage: {fileID: 21300000, guid: a39c0b285feea6b4f8fe730890c2faf0,
+    type: 3}
+  courseDescription: Elvens have a extensive magical knowledge, which allows them
+    to resist magic better than other enemies. While elemental skills may work depending
+    on the type of elf, physical skills are very effective, making this the perfect
+    training battle to show when physical skills should be used instead of magical
+    ones.
+  mainTrainingObjectives: 0000000001000000
+  enemiesPrefabList:
+  - {fileID: 7869087743518336108, guid: a66d7b2b38facc740923178619cbdceb, type: 3}
+  - {fileID: 7869087743518336108, guid: 5d0e57c91c40f574db28a39320a98ab2, type: 3}
+  - {fileID: 7869087743518336108, guid: 1ef00620f0688b844ab3bb4b33e6c479, type: 3}

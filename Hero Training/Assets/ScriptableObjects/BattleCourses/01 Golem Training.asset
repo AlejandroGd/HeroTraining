@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209cf72a6e2c1db43bd08f6a28ce3685, type: 3}
+  m_Name: 01 Golem Training
+  m_EditorClassIdentifier: 
+  courseId: 1
+  courseName: Golem Training
+  battleSelectionImage: {fileID: 21300000, guid: 4607a78294864d8469e5d8d8351a92a7,
+    type: 3}
+  courseDescription: 'Golems are known for their hard skins, which makes physical
+    attacks not very effective.
+
+    However, their dependance on magic makes them vulnerable to dark arts and elemental
+    skills, which makes this course perfect to teach your heroes about the use of
+    magic and the elements and avoid physic attacks when they are not effective.'
+  mainTrainingObjectives: 000000000100000002000000
+  enemiesPrefabList:
+  - {fileID: 7869087743518336108, guid: 27dd794197b0adc488ee0901a42d0b5b, type: 3}
+  - {fileID: 7869087743518336108, guid: 27abf4aa99ec4184d9d2eb247a3f90ab, type: 3}
+  - {fileID: 7869087743518336108, guid: cc626097a78b59f4a97ad4afeb5f9107, type: 3}
