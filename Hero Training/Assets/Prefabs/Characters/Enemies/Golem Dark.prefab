@@ -62,14 +62,15 @@ MonoBehaviour:
   physicalAttack: 75
   magicAttack: 75
   physicalDefense: 75
-  magicDefense: -25
-  fireDefense: -50
-  iceDefense: -50
+  magicDefense: 0
+  fireDefense: 0
+  iceDefense: 0
   resistWeak: 50
   resistMute: 50
   resistBlind: 50
   characterStatus: 
   playerControlled: 0
+  isAlly: 0
 --- !u!212 &4115440580092281199
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class SkillButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Start()
     {
-        gui = GameObject.Find("Skill Buttons GUI").GetComponent<SkillButtonsGUI>();
+        gui = FindObjectOfType<SkillButtonsGUI>();
         buttonTextComponent = GetComponentInChildren<TextMeshProUGUI>();
         buttonComponent = GetComponent<Button>();
     }

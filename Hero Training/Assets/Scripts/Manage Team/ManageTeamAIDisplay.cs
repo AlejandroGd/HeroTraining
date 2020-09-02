@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Deals with the display of all AI skills for a character in the character selector.
 public class ManageTeamAIDisplay : MonoBehaviour
 {
     [SerializeField] List<ManageTeamSkillData> skillDataList;

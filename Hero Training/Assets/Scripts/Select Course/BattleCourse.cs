@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Defines specific battle courses. Enables creating new battle course objects in the editor.
 [CreateAssetMenu(menuName = "Battle Course Config")]
 public class BattleCourse : ScriptableObject
 {

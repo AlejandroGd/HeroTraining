@@ -20,12 +20,10 @@ public class CharacterSelector : MonoBehaviour
 
     [SerializeField] ManageTeamAttributeDisplay attribDisplay;
     [SerializeField] ManageTeamAIDisplay aiDisplay;
-
-  
+      
     List<CharacterLoadData> availableChars;
         
-    int currentSelection;
-    
+    int currentSelection;    
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +43,7 @@ public class CharacterSelector : MonoBehaviour
         else availableChars = gameSession.AvailableTrainedCharacters;
     }
 
+    //Initialise both Player and Ally selectors with the 1st character in each list
     private void InitialiseSelector()
     {
         currentSelection = 0;
@@ -70,6 +69,7 @@ public class CharacterSelector : MonoBehaviour
         UpdateSelection();
     }
 
+    //Changes the image and data of the character selected
     private void UpdateSelection()
     {      
         //Images (Loop)
@@ -87,6 +87,7 @@ public class CharacterSelector : MonoBehaviour
         aiDisplay.UpdateAIDisplayData(availableChars[currentSelection]);
     }
 
+    //Change selected character to next in its list.
     public void SelectNextCharacter()
     {
         audioPlayer.PlayScrollButtonFx();
@@ -95,6 +96,7 @@ public class CharacterSelector : MonoBehaviour
         UpdateSelection();
     }
 
+    //Change selected character to previous in its list.
     public void SelectPreviousCharacter()
     {
         audioPlayer.PlayScrollButtonFx();
@@ -104,7 +106,6 @@ public class CharacterSelector : MonoBehaviour
     }
 
     public CharacterLoadData SelectedFighter { get => GetSelectedFighter(); }
-
     private CharacterLoadData GetSelectedFighter()
     {
         if (player) return gameSession.AvailableUntrainedCharacters[currentSelection];

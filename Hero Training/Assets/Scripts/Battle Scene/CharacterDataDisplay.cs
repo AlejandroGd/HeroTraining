@@ -9,15 +9,7 @@ public class CharacterDataDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameDisplay;
     [SerializeField] TextMeshProUGUI hpDisplay;
     [SerializeField] Image portraitDisplay;
-
-     BattleManagerStateMachine bmsm;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        bmsm = GameObject.Find("Battle Manager State Machine").GetComponent<BattleManagerStateMachine>();
-    }
-
+    
     public void UpdateDataDisplay(GameObject charactergameObject)
     {
         //Put player menu                

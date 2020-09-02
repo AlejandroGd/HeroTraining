@@ -54,6 +54,7 @@ MonoBehaviour:
   damage: 0
   status: 0
   turns: 3
+  animationTime: 1.2
 --- !u!212 &9151105161881926344
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -92,7 +93,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3fae7d0099defac49a6ac8f1adee1411, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.94509804}
+  m_Color: {r: 0, g: 0.2379129, b: 1, a: 0.94509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

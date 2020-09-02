@@ -7,9 +7,8 @@ using System;
 
 public class SkillButtonsGUI : MonoBehaviour
 {
+    BattleManager bsStateMachine;
 
-    BattleManagerStateMachine bsStateMachine;
-   
     [SerializeField] List<Button> skillButtonList;
     
     private Character activeCharacter;
@@ -17,21 +16,20 @@ public class SkillButtonsGUI : MonoBehaviour
     private void Start()
     {
         //Reference to the Turn Based Fight System
-        bsStateMachine = GameObject.Find("Battle Manager State Machine").GetComponent<BattleManagerStateMachine>();
+        bsStateMachine = FindObjectOfType<BattleManager>();
     }
-
-
-    public void ReloadSkillsInfo(Character activeCharacter)
+    
+    public void ReloadSkillsInfo(Character character)
     {
         //Sets the active character
-        this.activeCharacter = activeCharacter;
+        this.activeCharacter = character;
 
         //Loads info in buttons or deactivate them if there are not enough skills for them.
         for (int i = 0; i < 8; i++) //8 buttons max (No character will have more than 8 skills)
         {
-            if (i < activeCharacter.SkillPrefabList.Count)
+            if (i < character.SkillPrefabList.Count)
             {
-                skillButtonList[i].GetComponent<SkillButton>().ReloadSkillInfo(activeCharacter.SkillPrefabList[i].GetComponent<Skill>(), i);               
+                skillButtonList[i].GetComponent<SkillButton>().ReloadSkillInfo(character.SkillPrefabList[i].GetComponent<Skill>(), i);               
             }
             else
             {
@@ -40,7 +38,7 @@ public class SkillButtonsGUI : MonoBehaviour
         }
     }   
 
-    private void ClearSkillButtonGUI()
+    public void ClearSkillButtonGUI()
     {
         foreach(Button button in skillButtonList)
         {
@@ -49,33 +47,14 @@ public class SkillButtonsGUI : MonoBehaviour
     }      
 
     public void ButtonSkillClicked(int index)
-    {       
-        if (index < activeCharacter.SkillPrefabList.Count)
+    {
+        if (index < bsStateMachine.PlayerCharacter.SkillPrefabList.Count)
         {
             GameObject skillPrefabChosen = activeCharacter.SkillPrefabList[index];
-            Skill skill = skillPrefabChosen.GetComponent<Skill>();            
-            //Only player uses GUI, so if the skill is a buff apply to all allies. If not, apply to the enemy.
-            if (skill.SkillClass == Skill.SkillType.BUFF || skill.SkillClass == Skill.SkillType.HEAL)
-            {
-                activeCharacter.ApplySkillToAllies(skillPrefabChosen);
-            }
-            else
-            {
-                activeCharacter.ApplySkillToEnemies(skillPrefabChosen);
-            }
+            Skill skill = skillPrefabChosen.GetComponent<Skill>();
 
-            FightAIRecord aiRecord = new FightAIRecord( bsStateMachine.GetCharacterComponent_Player(),
-                                                        bsStateMachine.GetCharacterComponent_Ally(),
-                                                        bsStateMachine.GetCharacterComponent_Enemy(), 
-                                                        skill);
-            if (activeCharacter.PlayerControlled) activeCharacter.CharacterAI.Learn(aiRecord);
-            bsStateMachine.UpdateSkillsUsedCount(skill.SkillID);
-
-            //Clear the Buttons text and skill for next character.
-            ClearSkillButtonGUI();
-
-            bsStateMachine.currentBattleState = BattleState.PROCESS;
+            bsStateMachine.ApplyPlayerChoice(skillPrefabChosen);            
         }
-        else { Debug.Log("No skill assigned"); }      
+        else { Debug.Log("No skill assigned"); }
     }
 }

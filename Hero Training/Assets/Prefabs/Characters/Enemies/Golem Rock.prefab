@@ -60,10 +60,10 @@ MonoBehaviour:
   - {fileID: 4425520817107244015, guid: 14a9a8137f885b44989ec5039ac9a707, type: 3}
   physicalAttack: 75
   magicAttack: 75
-  physicalDefense: 75
+  physicalDefense: 50
   magicDefense: -50
-  fireDefense: 75
-  iceDefense: -50
+  fireDefense: 100
+  iceDefense: -100
   resistWeak: 75
   resistMute: 75
   resistBlind: 75

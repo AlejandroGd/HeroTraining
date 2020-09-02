@@ -56,19 +56,20 @@ MonoBehaviour:
   - {fileID: 4425520817107244015, guid: 006ef4304f1b0504b9046f57571f0981, type: 3}
   - {fileID: 2165076621748029409, guid: 9b80c1682f93aab488e3a1668ed0b0ca, type: 3}
   - {fileID: 2165076621748029409, guid: 664ab0ce214a4e144923351a29b07dd8, type: 3}
-  - {fileID: 2165076621748029409, guid: 9f61fbfac15e3a2458d2392aa98d6ef6, type: 3}
+  - {fileID: 2165076621748029409, guid: 83f1cdad5c41c83428220802c802d017, type: 3}
   - {fileID: 2165076621748029409, guid: 916767473756d434f8c9ed553b09f534, type: 3}
   physicalAttack: 20
   magicAttack: 100
-  physicalDefense: 0
-  magicDefense: 60
-  fireDefense: 20
-  iceDefense: 20
+  physicalDefense: 25
+  magicDefense: 50
+  fireDefense: 25
+  iceDefense: 25
   resistWeak: 0
   resistMute: 25
   resistBlind: 100
   characterStatus: 
   playerControlled: 0
+  isAlly: 0
 --- !u!212 &2806812183715183373
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.908}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 2.044, y: 1.8159999}
     newSize: {x: 11.66, y: 10.72}
     adaptiveTilingThreshold: 0.5

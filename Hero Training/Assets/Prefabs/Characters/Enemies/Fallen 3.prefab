@@ -60,15 +60,15 @@ MonoBehaviour:
   - {fileID: 4425520817107244015, guid: 14a9a8137f885b44989ec5039ac9a707, type: 3}
   - {fileID: 4425520817107244015, guid: 006ef4304f1b0504b9046f57571f0981, type: 3}
   - {fileID: 211680496614198232, guid: ced17fc00a0c7764d91f61e351705517, type: 3}
-  - {fileID: 2165076621748029409, guid: 9f61fbfac15e3a2458d2392aa98d6ef6, type: 3}
+  - {fileID: 2165076621748029409, guid: 83f1cdad5c41c83428220802c802d017, type: 3}
   - {fileID: 2165076621748029409, guid: ecffc82d1428e1a4d8c9cac23634b083, type: 3}
   - {fileID: 2165076621748029409, guid: 916767473756d434f8c9ed553b09f534, type: 3}
   physicalAttack: 100
   magicAttack: 50
   physicalDefense: 0
-  magicDefense: 50
-  fireDefense: 25
-  iceDefense: 25
+  magicDefense: 100
+  fireDefense: 0
+  iceDefense: 0
   resistWeak: 50
   resistMute: 0
   resistBlind: 0

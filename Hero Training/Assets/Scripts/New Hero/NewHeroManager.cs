@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
+//Deals with the New Hero Manager screen. 
 public class NewHeroManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> allyPrefabs;

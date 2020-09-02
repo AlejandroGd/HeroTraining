@@ -29,7 +29,7 @@ public class AttributeDisplay : MonoBehaviour
         UpdateStatus();
     }
 
-    //Self explanatory.
+    //Get Display ready to be used (updates the HP bar and tint all status icons grey).
     private void InitialiseDisplay()
     {
         UpdateHp();

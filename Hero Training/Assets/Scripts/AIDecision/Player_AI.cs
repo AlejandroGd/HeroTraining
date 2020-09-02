@@ -34,8 +34,8 @@ public class Player_AI : CharacterAI
 
     public override GameObject ChooseAction(List<GameObject> skillList, FightAIRecord record)
     {
-        //If there is no knowledge, just choose randomly.
-        if (fightHistoryRecords.Count == 0) return skillList[UnityEngine.Random.Range(0, skillList.Count)];
+        //If there is no knowledge, just choose the first one, which should be a basic attack.
+        if (fightHistoryRecords.Count == 0) return skillList[0];
     
         int skillID = decisionTree.ChooseSkill(record);
         foreach(GameObject skillObject in skillList)
@@ -60,7 +60,7 @@ public class Player_AI : CharacterAI
 
         if (needsToRebuild)
         {
-            PrintToConsole();
+            //PrintToConsole(); //Print to console for test purposes.
             if (fightHistoryRecords.Count > 0)
             {
                 decisionTree = MakeTree(fightHistoryRecords);

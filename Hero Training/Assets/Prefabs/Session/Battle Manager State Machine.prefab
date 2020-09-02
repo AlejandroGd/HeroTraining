@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8500867941859916375}
-  - component: {fileID: 8500867941859916372}
+  - component: {fileID: 8500867942183128899}
   m_Layer: 0
   m_Name: Battle Manager State Machine
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8500867941859916372
+--- !u!114 &8500867942183128899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,16 +40,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8500867941859916373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d121943b5f9430c40af0a9c4a21d945f, type: 3}
+  m_Script: {fileID: 11500000, guid: 939cda8dec73fe249ac87a90e87f8cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentBattleState: 0
+  helpText: {fileID: 0}
   activeCharacterDataDisplay: {fileID: 0}
-  turnDisplay: {fileID: 0}
   attributeDisplayPlayer: {fileID: 0}
   attributeDisplayAlly: {fileID: 0}
   attributeDisplayEnemy: {fileID: 0}
-  playerPosition: {fileID: 0}
-  allyPosition: {fileID: 0}
-  enemyPosition: {fileID: 0}
+  playerPosTransform: {fileID: 0}
+  allyPosTransform: {fileID: 0}
+  enemyPosTransform: {fileID: 0}
   resultsPanel: {fileID: 0}

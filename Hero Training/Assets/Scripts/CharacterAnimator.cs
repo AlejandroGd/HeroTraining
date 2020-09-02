@@ -21,12 +21,12 @@ public class CharacterAnimator : MonoBehaviour
         if (anim != null) anim.Play("Attack");
     }
 
-    public void PlayHurt()
+    public void PlayNegativeEffect()
     {
         if (anim != null) anim.Play("Hurt");
     }
 
-    public void PlayBuff()
+    public void PlayPositivEffect()
     {
         if (anim != null) anim.Play("Buff");
     }

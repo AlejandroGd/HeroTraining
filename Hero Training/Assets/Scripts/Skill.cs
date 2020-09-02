@@ -21,6 +21,9 @@ public class Skill : MonoBehaviour
     [SerializeField] Character.Status status = Character.Status.NONE;
     [SerializeField] int turns = 0;
 
+    [Header("Animation Parameters")]
+    [SerializeField] float animationTime = 1.2f;
+
     //Animation flags
     bool animationFinished = false; public bool AnimationFinished { get => animationFinished; }
 
@@ -32,7 +35,9 @@ public class Skill : MonoBehaviour
     public EElement Element { get => element; }
     public Character.Status Status { get => status; }    
     public int Damage { get => damage; set => damage = value; }
+    public float AnimationPlayTime { get => animationTime; }
 
+    
     public int Turns { get => turns; }
     
     public void DestroyObject()

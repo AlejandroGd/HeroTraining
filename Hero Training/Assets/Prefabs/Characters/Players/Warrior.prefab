@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 4440127406669446589, guid: 1a87b4f451f13d14da05c3d1b4c593e1, type: 3}
   physicalAttack: 100
   magicAttack: 0
-  physicalDefense: 70
+  physicalDefense: 50
   magicDefense: 25
   fireDefense: 0
   iceDefense: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   resistBlind: 25
   characterStatus: 
   playerControlled: 1
+  isAlly: 0
 --- !u!212 &3221950439739390647
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ BoxCollider2D:
   m_Offset: {x: 0.4310019, y: 0.9650693}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.45, y: 0.1}
     oldSize: {x: 2.5911112, y: 2.3822222}
     newSize: {x: 11.66, y: 10.72}
     adaptiveTilingThreshold: 0.5

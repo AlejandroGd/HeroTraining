@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//Deals with the display of character attributes in the character selector.
 public class ManageTeamAttributeDisplay : MonoBehaviour
 {
     //Custom Colours for the text

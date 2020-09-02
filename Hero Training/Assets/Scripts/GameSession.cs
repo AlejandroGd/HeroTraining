@@ -66,20 +66,7 @@ public class GameSession : MonoBehaviour
         data = new CharacterLoadData("Lucy", allyPrefabs[2], new Player_AI()); //Chemist (Trained List)
         availableTrainedCharacters.Add(data);
     }
-
-
-    public void UpdatePlayerAI(CharacterAI characterAI)
-    {
-        //Updates directly in the AvailableAllies List
-        Player.LinkedAI = characterAI;
-    }
-
-    public void UpdateAllyAI(CharacterAI characterAI)
-    {
-        //Updates directly in the AvailableAllies List
-        Ally.LinkedAI = characterAI;
-    }
-
+    
     public void SaveCharacterDataToFile()
     {
         BinaryFormatter bf = new BinaryFormatter();

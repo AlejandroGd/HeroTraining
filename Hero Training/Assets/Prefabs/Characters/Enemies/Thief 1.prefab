@@ -55,7 +55,7 @@ MonoBehaviour:
   currentHealthPoints: 650
   skillPrefabList:
   - {fileID: 4425520817107244015, guid: 14a9a8137f885b44989ec5039ac9a707, type: 3}
-  - {fileID: 2165076621748029409, guid: 9f61fbfac15e3a2458d2392aa98d6ef6, type: 3}
+  - {fileID: 2165076621748029409, guid: 83f1cdad5c41c83428220802c802d017, type: 3}
   - {fileID: 4440127406669446589, guid: 1a87b4f451f13d14da05c3d1b4c593e1, type: 3}
   physicalAttack: 100
   magicAttack: 0

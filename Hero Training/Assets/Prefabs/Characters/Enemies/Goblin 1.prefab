@@ -58,11 +58,11 @@ MonoBehaviour:
   - {fileID: 4425520817107244015, guid: 14a9a8137f885b44989ec5039ac9a707, type: 3}
   - {fileID: 4440127406669446589, guid: 1a87b4f451f13d14da05c3d1b4c593e1, type: 3}
   physicalAttack: 100
-  magicAttack: 25
-  physicalDefense: 25
-  magicDefense: 25
-  fireDefense: 50
-  iceDefense: 50
+  magicAttack: 50
+  physicalDefense: 0
+  magicDefense: 0
+  fireDefense: 0
+  iceDefense: 0
   resistWeak: 100
   resistMute: 100
   resistBlind: 100

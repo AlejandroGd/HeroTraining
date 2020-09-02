@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//Deals with a single skill data in the display of AI skills in the character selector.
 public class ManageTeamSkillData : MonoBehaviour
 {
     [SerializeField] Image skillImage;

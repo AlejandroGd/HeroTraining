@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//Deals with the dropdown in the New Hero scene to select the type of hero to create.
 public class FighterSelectionDropdown : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown dropDown;

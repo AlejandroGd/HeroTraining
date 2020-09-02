@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 public class Character : MonoBehaviour
 { 
     //Reference to the BattleManager State Machine
-    BattleManagerStateMachine bsStateMachine;
-    
+    //BattleManagerStateMachine bsStateMachine;
+    BattleManager bsStateMachine;
+
     public enum Status
     {
         SHIELD = 0,
@@ -40,7 +41,7 @@ public class Character : MonoBehaviour
 
     //Accessors
     public string MenuName { get => menuName; }
-    public string CharacterName { get => characterName; }
+    public string CharacterName { get => characterName; set => characterName = value; }
     public string CharacterDescription { get => characterDescription; }
     public int MaxHealthPoints { get => maxHealthPoints; }
     public int CurrentHealthPoints { get => currentHealthPoints; }
@@ -65,8 +66,13 @@ public class Character : MonoBehaviour
     [SerializeField] bool isAlly = false;
     public bool IsAlly { get => isAlly; set => isAlly = value; }
 
+    //Initialise the status array.
+    public void InitialiseParameters()
+    {
+        characterStatus = new int[5];// From the Status enum,  SHIELD = 0, BARRIER = 1, BLIND = 2, MUTE = 3, WEAK = 4
+    }
 
-    //AI (Random choice so far)
+    //AI
     CharacterAI characterAI; public CharacterAI CharacterAI { get => characterAI; set => characterAI = value; }
         
     //Buff/Debuff
@@ -74,139 +80,61 @@ public class Character : MonoBehaviour
     {        
         return characterStatus[(int)status] > 0;
     }
+
     public bool ApplyStatus(Status status, int turns)
     {
-        //Status counters decrement when the character turn becomes active. I.E: Having the counter at 3 will keep the status active for 2 full turns, and the 3rd will become 0 (inactive). 
-        //However, to clear the statuses (turns = 0) we just put it to 0;
-        if (turns != 0) characterStatus[(int)status] = turns + 1;
+        //Status counters should decrement when the character turn becomes active.
+        if (turns != 0) characterStatus[(int)status] = turns;
         else characterStatus[(int)status] = 0;
         return true;
     }
-    public void DiscountTurnForStatus()
+
+    public void DiscountTurnForAllStatus()
     {
        for (int x =0; x < characterStatus.Length; x++)
         {
             if (characterStatus[x] > 0) characterStatus[x]--;
         }
     }
-
-   
-    // Start is called before the first frame update    
-    void Start()
-    {
-        bsStateMachine = GameObject.Find("Battle Manager State Machine").GetComponent<BattleManagerStateMachine>();
-        InitialiseParameters();
-    }
-
+    
     public bool IsDead() { return currentHealthPoints <= 0; }
 
-    public void ChooseAction()
+    public GameObject ChooseAction(FightAIRecord stateRecord)
     {
-        GameObject skillPrefab;
-        FightAIRecord stateRecord = null;
-
-        if (gameObject.tag == "Ally")
-        {
-            stateRecord = new FightAIRecord(bsStateMachine.GetCharacterComponent_Ally(), bsStateMachine.GetCharacterComponent_Player(), bsStateMachine.GetCharacterComponent_Enemy());            
-        }
-        else
-        {
-            //Enemy AI tailor its attacks to the resistances of the 1st character passed in a fightRecord.
-            if(!bsStateMachine.GetCharacterComponent_Player().IsDead())
-            {
-                stateRecord = new FightAIRecord(bsStateMachine.GetCharacterComponent_Player(), bsStateMachine.GetCharacterComponent_Ally(), bsStateMachine.GetCharacterComponent_Enemy());
-            }
-            else
-            {
-                stateRecord = new FightAIRecord(bsStateMachine.GetCharacterComponent_Ally(), bsStateMachine.GetCharacterComponent_Player(), bsStateMachine.GetCharacterComponent_Enemy());
-            }
-            
-        }
-
-        skillPrefab = characterAI.ChooseAction(skillPrefabList, stateRecord);
-
-        Skill skill = skillPrefab.GetComponent<Skill>();
-
-        //If the skill is a buff apply to its team (ally to all allies, enemy to all enemies).
-        //If not, apply to the opponet team.
-        if (   (gameObject.tag == "Ally" && (skill.SkillClass == Skill.SkillType.BUFF || skill.SkillClass == Skill.SkillType.HEAL) )
-            || (gameObject.tag == "Enemy" && (skill.SkillClass != Skill.SkillType.BUFF && skill.SkillClass != Skill.SkillType.HEAL)))
-        {
-            ApplySkillToAllies(skillPrefab);
-        }
-        else
-        {
-            ApplySkillToEnemies(skillPrefab);
-        }        
-
-        bsStateMachine.currentBattleState = BattleState.PROCESS;      
+        GameObject skillPrefab = characterAI.ChooseAction(skillPrefabList, stateRecord);
+        return skillPrefab;
     }
 
-    //Add a BattleAction from this character for all of the allies.
-    public void ApplySkillToAllies(GameObject skill)
-    {
-        foreach ( GameObject ally in bsStateMachine.AlliesList)
-        {
-            //If target is not dead
-            if (ally.GetComponent<Character>().CurrentHealthPoints > 0)
-            {
-                //Create the action data
-                BattleAction battleAction = new BattleAction();
-                battleAction.Attacker = gameObject;
-                battleAction.Action = skill;
-                battleAction.Target = ally;
-
-                //Add to the action queue
-                bsStateMachine.ActionQueue.Add(battleAction);
-            }
-        }
-    }
-
-    //Add a BattleAction from this character for all of the enemies.
-    public void ApplySkillToEnemies(GameObject skill)
-    {
-        foreach (GameObject enemy in bsStateMachine.EnemiesList)
-        {
-            //If target is not dead
-            if (enemy.GetComponent<Character>().CurrentHealthPoints > 0)
-            {
-                //Create the action data
-                BattleAction battleAction = new BattleAction();
-                battleAction.Attacker = gameObject;
-                battleAction.Action = skill;
-                battleAction.Target = enemy;
-
-                //Add to the action queue
-                bsStateMachine.ActionQueue.Add(battleAction);
-            }
-        }
-    }
-
-
-
-    //Initialise the status array.
-    public void InitialiseParameters()
-    {
-        characterStatus = new int[5];// From the Status enum,  SHIELD = 0, BARRIER = 1, BLIND = 2, MUTE = 3, WEAK = 4
-    }   
-
-    private void DealDamage(int amount) { currentHealthPoints = Mathf.Clamp(currentHealthPoints - amount, 0, maxHealthPoints); }
-    public void Heal(int amount) { currentHealthPoints = Mathf.Clamp(currentHealthPoints + amount, 0, maxHealthPoints); }
-
-    
     public bool ApplySkill(Character attacker, Skill skill)
     {
         switch (skill.SkillClass)
         {
-            case Skill.SkillType.PHYSIC:   return ApplyPhisicalSkill(attacker, skill);                
-            case Skill.SkillType.MAGIC:    return ApplyMagicalSkill(attacker, skill);                
-            case Skill.SkillType.BUFF:     return ApplyBuffSkill(skill);
-            case Skill.SkillType.DEBUFF:   return ApplyDebuffSkill(skill);
-            case Skill.SkillType.HEAL:     return ApplyHealSkill(skill);
-            default:                        return false;                
+            case Skill.SkillType.PHYSIC: return ApplyPhisicalSkill(attacker, skill);
+            case Skill.SkillType.MAGIC: return ApplyMagicalSkill(attacker, skill);
+            case Skill.SkillType.BUFF: return ApplyBuffSkill(skill);
+            case Skill.SkillType.DEBUFF: return ApplyDebuffSkill(skill);
+            case Skill.SkillType.HEAL: return HealAllStatus(skill);
+            default: return false;
         }
     }
 
+
+    // Start is called before the first frame update    
+    void Start()
+    {
+        bsStateMachine = FindObjectOfType<BattleManager>();       
+    }
+
+    //Battle manager instantiate character objects on start.
+    //We initialize on awake so the status data is availanble straight away and not on the next loop the gameObject is active, which is when start would be called.
+    private void Awake()
+    {
+        InitialiseParameters();
+    }
+       
+
+    private void DealDamage(int amount) { currentHealthPoints = Mathf.Clamp(currentHealthPoints - amount, 0, maxHealthPoints); }    
+    
     //Physical params used
     private bool ApplyPhisicalSkill(Character attacker, Skill skill)
     {
@@ -324,7 +252,7 @@ public class Character : MonoBehaviour
     }
 
     //Healing skills
-    private bool ApplyHealSkill(Skill skill)
+    private bool HealAllStatus(Skill skill)
     {
         if (skill.SkillID == 43) //Remedy skill, clear negative statuses
         {
@@ -332,22 +260,21 @@ public class Character : MonoBehaviour
             ApplyStatus(Status.MUTE, 0);
             ApplyStatus(Status.WEAK, 0);
         }
-        else this.Heal(Mathf.Abs(skill.Damage));
+        else
+        {
+            currentHealthPoints = Mathf.Clamp(currentHealthPoints + Mathf.Abs(skill.Damage), 0, maxHealthPoints);
+        }       
         
         return true;
     }
-
-    
-   
+      
     private void OnMouseEnter()
-    {
-        if (bsStateMachine.currentBattleState == BattleState.WAITING_FOR_PLAYER_INPUT)
-            bsStateMachine.CharacterStatsDisplay.ShowInfo(this);
+    {     
+        bsStateMachine.CharacterStatsDisplay.ShowInfo(this);
     }
 
     private void OnMouseExit()
-    {
-        if (bsStateMachine.currentBattleState == BattleState.WAITING_FOR_PLAYER_INPUT)
-            bsStateMachine.CharacterStatsDisplay.ClearInfo();
+    {       
+        bsStateMachine.CharacterStatsDisplay.ClearInfo();
     }    
 }

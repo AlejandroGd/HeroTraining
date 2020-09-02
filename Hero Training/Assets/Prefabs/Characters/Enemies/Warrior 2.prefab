@@ -65,8 +65,8 @@ MonoBehaviour:
   magicAttack: 50
   physicalDefense: 50
   magicDefense: 0
-  fireDefense: 25
-  iceDefense: 25
+  fireDefense: 50
+  iceDefense: 50
   resistWeak: 25
   resistMute: 75
   resistBlind: 75

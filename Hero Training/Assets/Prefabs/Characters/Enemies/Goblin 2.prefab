@@ -62,7 +62,7 @@ MonoBehaviour:
   physicalAttack: 0
   magicAttack: 100
   physicalDefense: 0
-  magicDefense: 75
+  magicDefense: 100
   fireDefense: 0
   iceDefense: 0
   resistWeak: 50

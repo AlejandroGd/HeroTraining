@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//Deals with the functionality on the Battle selection screen.
 public class BattleSelector : MonoBehaviour
 {
     GameSession gameSession;
